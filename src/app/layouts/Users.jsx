@@ -5,7 +5,7 @@ import UsersList from '../components/UsersList'
 const Users = () => {
     const params = useParams()
     const { userId } = params
-    console.log('userId', userId)
+    // console.log('userId', userId)
     return <>{userId ? <UserPage userId={userId} /> : <UsersList />}</>
 }
 
