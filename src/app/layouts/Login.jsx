@@ -47,7 +47,7 @@ const Login = () => {
     const validate = () => {
         const errors = validator(data, validatorConfig)
         setErrors(errors)
-        return Object.keys(errors).length !== 0
+        return Object.keys(errors).length === 0
     }
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -72,7 +72,8 @@ const Login = () => {
                 onChange={handleChange}
                 error={errors.password}
             />
-            <button>Отправить</button>
+            {/* <button>Отправить</button> */}
+            <button type="submit">Submit</button>
         </form>
     )
 }
