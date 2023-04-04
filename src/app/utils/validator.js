@@ -1,6 +1,3 @@
-// 19.11.22
-// https://regex101.com/
-// https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference
 export function validator(data, config) {
     const errors = {}
     function validate(validateMethod, data, config) {
