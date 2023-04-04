@@ -5,7 +5,7 @@ import TextField from '../components/TextField'
 
 const Login = () => {
     const [data, setData] = useState({ email: '', password: '' })
-    const [errors, setErrors] = useState('')
+    const [errors, setErrors] = useState({}) // Отображение ошибки валидации // не забываем передавать дефолт объект
     console.log('errors', errors)
     const handleChange = ({ target }) => {
         setData((prevState) => ({
@@ -25,15 +25,13 @@ const Login = () => {
             }
         }
         setErrors(errors)
-        return Object.keys(errors).length !== 0 // Базовая валидация var2
+        return Object.keys(errors).length !== 0
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        // validate() // Базовая валидация var1
-        // if (Object.keys(errors).length !== 0) return var1
-        const isValid = validate() // Базовая валидация var2
-        if (!isValid) return // Базовая валидация var2
-        console.log(data) // Базовая валидация var2
+        const isValid = validate()
+        if (!isValid) return
+        console.log(data)
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -42,6 +40,7 @@ const Login = () => {
                 name="email"
                 value={data.email}
                 onChange={handleChange}
+                error={errors.email} // Отображение ошибки валидации
             />
             <TextField
                 label="Пароль"
@@ -49,6 +48,7 @@ const Login = () => {
                 name="password"
                 value={data.password}
                 onChange={handleChange}
+                error={errors.password} // Отображение ошибки валидации
             />
             <button>Отправить</button>
         </form>
