@@ -6,7 +6,7 @@ import TextField from '../components/TextField'
 const Login = () => {
     const [data, setData] = useState({ email: '', password: '' })
     const [errors, setErrors] = useState({}) // Отображение ошибки валидации // не забываем передавать дефолт объект
-    console.log('errors', errors)
+    // console.log('errors', errors)
     const handleChange = ({ target }) => {
         setData((prevState) => ({
             ...prevState,
@@ -25,13 +25,13 @@ const Login = () => {
             }
         }
         setErrors(errors)
-        return Object.keys(errors).length !== 0
+        return Object.keys(errors).length === 0
     }
     const handleSubmit = (e) => {
         e.preventDefault()
         const isValid = validate()
         if (!isValid) return
-        console.log(data)
+        console.log('data', data)
     }
     return (
         <form onSubmit={handleSubmit}>
