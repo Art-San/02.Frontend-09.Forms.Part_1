@@ -5,7 +5,7 @@ import TextField from '../components/TextField'
 
 const Login = () => {
     const [data, setData] = useState({ email: '', password: '' })
-    const [errors, setErrors] = useState({}) // Отображение ошибки валидации // не забываем передавать дефолт объект
+    const [errors, setErrors] = useState({})
     console.log('errors', errors)
     const handleChange = ({ target }) => {
         setData((prevState) => ({
@@ -40,7 +40,7 @@ const Login = () => {
                 name="email"
                 value={data.email}
                 onChange={handleChange}
-                error={errors.email} // Отображение ошибки валидации
+                error={errors.email}
             />
             <TextField
                 label="Пароль"
@@ -48,7 +48,7 @@ const Login = () => {
                 name="password"
                 value={data.password}
                 onChange={handleChange}
-                error={errors.password} // Отображение ошибки валидации
+                error={errors.password}
             />
             <button>Отправить</button>
         </form>

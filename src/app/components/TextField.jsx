@@ -12,9 +12,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
                 value={value}
                 onChange={onChange}
             />
-            {
-                error && <p>{error}</p> // Отображение ошибки валидации
-            }
+            {error && <p>{error}</p>}
         </div>
     )
 }
