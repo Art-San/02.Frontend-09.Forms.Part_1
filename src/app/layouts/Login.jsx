@@ -50,7 +50,7 @@ const Login = () => {
         return Object.keys(errors).length === 0
     }
 
-    const isValid = Object.keys(errors).length === 0 // Отключение кнопки отправки
+    const isValid = Object.keys(errors).length === 0
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -75,10 +75,7 @@ const Login = () => {
                 onChange={handleChange}
                 error={errors.password}
             />
-            <button
-                type="submit"
-                disabled={!isValid} // Отключение кнопки отправки
-            >
+            <button type="submit" disabled={!isValid}>
                 Submit
             </button>
         </form>
