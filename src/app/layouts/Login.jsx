@@ -25,12 +25,12 @@ const Login = () => {
             }
         }
         setErrors(errors)
-        return Object.keys(errors).length !== 0 // Базовая валидация var2
+        return Object.keys(errors).length === 0 // Базовая валидация var2
     }
     const handleSubmit = (e) => {
         e.preventDefault()
         // validate() // Базовая валидация var1
-        // if (Object.keys(errors).length !== 0) return var1
+        // if (Object.keys(errors).length === 0) return var1
         const isValid = validate() // Базовая валидация var2
         if (!isValid) return // Базовая валидация var2
         console.log(data) // Базовая валидация var2
