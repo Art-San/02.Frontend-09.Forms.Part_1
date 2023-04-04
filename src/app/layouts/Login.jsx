@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TextField from '../components/TextField'
 import { validator } from '../utils/validator'
-
-// form>(div>label+input)*2
-
 const Login = () => {
     const [data, setData] = useState({ email: '', password: '' })
     const [errors, setErrors] = useState({})
@@ -26,20 +23,9 @@ const Login = () => {
         password: {
             isRequired: {
                 message: 'Пароль обязательна для заполнения'
-            },
-            isCapitalSymbol: {
-                message: 'Пароль должен содержать хотя бы одну заглавную букву'
-            },
-            isContainDigit: {
-                message: 'Пароль должен содержать хотя бы одну цифру'
-            },
-            min: {
-                message: 'Пароль должен быть не менее 8 символов',
-                value: 8
             }
         }
     }
-
     useEffect(() => {
         validate()
     }, [data])
@@ -47,13 +33,15 @@ const Login = () => {
     const validate = () => {
         const errors = validator(data, validatorConfig)
         setErrors(errors)
-        return Object.keys(errors).length !== 0
+        return Object.keys(errors).length === 0
     }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const isValid = validate()
+        console.log('isValid', isValid)
         if (!isValid) return
-        console.log(data)
+        console.log('data', data)
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -72,7 +60,8 @@ const Login = () => {
                 onChange={handleChange}
                 error={errors.password}
             />
-            <button>Отправить</button>
+            {/* <button>Submit</button>  */}
+            <button type="submit">Submit</button>
         </form>
     )
 }
