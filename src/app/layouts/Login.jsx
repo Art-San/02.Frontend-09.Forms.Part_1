@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TextField from '../components/TextField'
 import { validator } from '../utils/validator'
+
 const Login = () => {
     const [data, setData] = useState({ email: '', password: '' })
     const [errors, setErrors] = useState({})
@@ -23,9 +24,20 @@ const Login = () => {
         password: {
             isRequired: {
                 message: 'Пароль обязательна для заполнения'
+            },
+            isCapitalSymbol: {
+                message: 'Пароль должен содержать хотя бы одну заглавную букву'
+            },
+            isContainDigit: {
+                message: 'Пароль должен содержать хотя бы одну цыфру'
+            },
+            min: {
+                message: 'Пароль должен быть не менее 8 символов',
+                value: 8
             }
         }
     }
+
     useEffect(() => {
         validate()
     }, [data])
@@ -60,7 +72,6 @@ const Login = () => {
                 onChange={handleChange}
                 error={errors.password}
             />
-            {/* <button>Submit</button>  */}
             <button type="submit">Submit</button>
         </form>
     )
