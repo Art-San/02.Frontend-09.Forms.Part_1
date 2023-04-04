@@ -4,31 +4,36 @@ import TextField from '../components/TextField'
 // form>(div>label+input)*2
 
 const Login = () => {
-  const [data, setData] = useState({ email: '', password: '' })
-  const handleChange = ({ target }) => {
-    setData((prevState) => ({
-        ...prevState,
-        [target.name]: target.value
-      }))
-  }
-
-  return (
-    <form action="">
-        <TextField
-            label='Электронная почта'
-            name='email'
-            value={data.email}
-            onChange={handleChange}
-          />
-          <TextField
-            label='Пароль'
-            type="password"
-            name='password'
-            value={data.password}
-            onChange={handleChange}
-          />
-    </form>
-  )
+    const [data, setData] = useState({ email: '', password: '' })
+    const handleChange = ({ target }) => {
+        setData((prevState) => ({
+            ...prevState,
+            [target.name]: target.value
+        }))
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log('data', data)
+    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <TextField
+                label="Электронная почта"
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+            />
+            <TextField
+                label="Пароль"
+                type="password"
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+            />
+            <button>Отправить</button>
+            <button type="button">Другое действие</button>
+        </form>
+    )
 }
 
 export default Login

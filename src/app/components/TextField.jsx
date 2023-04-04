@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TextField = ({ label, type, name, value, onChange }) => {
-  return (
+    return (
         <div>
             <label htmlFor={name}>{label}</label>
             <input
@@ -13,7 +13,7 @@ const TextField = ({ label, type, name, value, onChange }) => {
                 onChange={onChange}
             />
         </div>
-  )
+    )
 }
 TextField.defaultProps = {
     type: 'text'
