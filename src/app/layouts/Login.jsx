@@ -1,29 +1,45 @@
 import React, { useState, useEffect } from 'react'
 import TextField from '../components/TextField'
+import { validator } from '../utils/validator'
 
 // form>(div>label+input)*2
 
 const Login = () => {
     const [data, setData] = useState({ email: '', password: '' })
     const [errors, setErrors] = useState({})
-    console.log('errors', errors)
     const handleChange = ({ target }) => {
         setData((prevState) => ({
             ...prevState,
             [target.name]: target.value
         }))
     }
+    // Создание валидатора
+    const validatorConfig = {
+        email: {
+            isRequired: {
+                message: 'Электронная почта обязательна для заполнения'
+            }
+        },
+        password: {
+            isRequired: {
+                message: 'Пароль обязателен для заполнения'
+            }
+        }
+    }
     useEffect(() => {
         validate()
     }, [data])
 
     const validate = () => {
-        const errors = {}
-        for (const fieldName in data) {
-            if (data[fieldName].trim() === '') {
-                errors[fieldName] = `${fieldName} обязательно для заполнения`
-            }
-        }
+        const errors = validator(data, validatorConfig) // Создание валидатора
+
+        // нам больше не нужна сдесь эта проверка
+        // const errors = {}
+        // for (const fieldName in data) {
+        //     if (data[fieldName].trim() === '') {
+        //         errors[fieldName] = `${fieldName} обязательно для заполнения`
+        //     }
+        // }
         setErrors(errors)
         return Object.keys(errors).length !== 0
     }
