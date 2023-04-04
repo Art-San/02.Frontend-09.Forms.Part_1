@@ -41,7 +41,7 @@ const Login = () => {
         //     }
         // }
         setErrors(errors)
-        return Object.keys(errors).length !== 0
+        return Object.keys(errors).length === 0
     }
     const handleSubmit = (e) => {
         e.preventDefault()
