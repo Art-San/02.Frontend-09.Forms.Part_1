@@ -13,7 +13,7 @@ const Login = () => {
             [target.name]: target.value
         }))
     }
-    // Создание валидатора
+
     const validatorConfig = {
         email: {
             isRequired: {
@@ -31,15 +31,7 @@ const Login = () => {
     }, [data])
 
     const validate = () => {
-        const errors = validator(data, validatorConfig) // Создание валидатора
-
-        // нам больше не нужна сдесь эта проверка
-        // const errors = {}
-        // for (const fieldName in data) {
-        //     if (data[fieldName].trim() === '') {
-        //         errors[fieldName] = `${fieldName} обязательно для заполнения`
-        //     }
-        // }
+        const errors = validator(data, validatorConfig)
         setErrors(errors)
         return Object.keys(errors).length !== 0
     }
