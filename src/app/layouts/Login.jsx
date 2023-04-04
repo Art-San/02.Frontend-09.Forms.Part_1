@@ -18,14 +18,28 @@ const Login = () => {
         email: {
             isRequired: {
                 message: 'Электронная почта обязательна для заполнения'
+            },
+            isEmail: {
+                message: 'Email введен не некорректно'
             }
         },
         password: {
             isRequired: {
-                message: 'Пароль обязателен для заполнения'
+                message: 'Пароль обязательна для заполнения'
+            },
+            isCapitalSymbol: {
+                message: 'Пароль должен содержать хотя бы одну заглавную букву'
+            },
+            isContainDigit: {
+                message: 'Пароль должен содержать хотя бы одну цифру'
+            },
+            min: {
+                message: 'Пароль должен быть не менее 8 символов',
+                value: 8
             }
         }
     }
+
     useEffect(() => {
         validate()
     }, [data])
