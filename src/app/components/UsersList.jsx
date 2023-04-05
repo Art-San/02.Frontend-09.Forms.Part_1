@@ -11,7 +11,7 @@ import _ from 'lodash'
 const Users = () => {
     const [currentPege, setCurrentPage] = useState(1)
     const [professions, setProfessions] = useState()
-    const [serchQuery, setSerchQuery] = useState('') // строка поиска по имени
+    const [serchQuery, setSerchQuery] = useState('')
     const [selectedProf, setSelectedProf] = useState()
     const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' })
 
@@ -32,15 +32,6 @@ const Users = () => {
             return user
         })
         return newArray
-        // setUsers(
-        //     users.map((user) => {
-        //         if (user._id === id) {
-        //             return { ...user, bookmark: !user.bookmark }
-        //         }
-        //         return user
-        //     })
-        // )
-        // console.log(id)
     }
 
     useEffect(() => {
@@ -50,15 +41,14 @@ const Users = () => {
     }, [])
     useEffect(() => {
         setCurrentPage(1)
-    }, [selectedProf, serchQuery]) // строка поиска по имени
+    }, [selectedProf, serchQuery])
 
     const handleProfessionsSelect = (item) => {
-        if (serchQuery !== '') setSerchQuery('') // строка поиска по имени
+        if (serchQuery !== '') setSerchQuery('')
         setSelectedProf(item)
     }
 
     const handleSerchQuery = ({ target }) => {
-        // строка поиска по имени
         setSelectedProf(undefined)
         setSerchQuery(target.value)
     }
@@ -71,7 +61,7 @@ const Users = () => {
     }
 
     if (users) {
-        const filteredUsers = serchQuery // строка поиска по имени
+        const filteredUsers = serchQuery
             ? users.filter(
                   (user) =>
                       user.name
@@ -120,7 +110,7 @@ const Users = () => {
                     <input
                         type={'text'}
                         name="serchQuery"
-                        onChange={handleSerchQuery} // строка поиска по имени
+                        onChange={handleSerchQuery}
                         value={serchQuery}
                         placeholder="Search..."
                     />
