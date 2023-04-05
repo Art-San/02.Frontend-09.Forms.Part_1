@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const TextField = ({ label, type, name, value, onChange, error }) => {
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false) // Скрыть Показать пароль
     const getInputClasses = () => {
         return 'form-control' + (error ? ' is-invalid' : '')
     }
     const toggleShowPassword = () => {
+        // Скрыть Показать пароль
         setShowPassword((prevState) => !prevState)
     }
     return (
@@ -14,14 +15,14 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
             <label htmlFor={name}>{label}</label>
             <div className="input-group has-validation">
                 <input
-                    type={type}
+                    type={showPassword ? 'text' : type} // Скрыть Показать пароль
                     id={name}
                     name={name}
                     value={value}
                     onChange={onChange}
                     className={getInputClasses()}
                 />
-                {type === 'password' && (
+                {type === 'password' && ( // Скрыть Показать пароль
                     <button
                         className="btn btn-outline-secondary"
                         type="button"
