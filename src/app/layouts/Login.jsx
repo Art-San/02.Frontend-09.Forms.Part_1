@@ -3,6 +3,7 @@ import TextField from '../components/TextField'
 import { validator } from '../utils/validator'
 
 // form>(div>label+input)*2
+// переез на следующий урок
 
 const Login = () => {
     const [data, setData] = useState({ email: '', password: '' })
